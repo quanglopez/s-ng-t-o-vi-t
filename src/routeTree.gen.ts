@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VoiceRouteImport } from './routes/voice'
+import { Route as RemixRouteImport } from './routes/remix'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BoardsRouteImport } from './routes/boards'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,6 +20,11 @@ import { Route as BoardsBoardIdRouteImport } from './routes/boards.$boardId'
 const VoiceRoute = VoiceRouteImport.update({
   id: '/voice',
   path: '/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemixRoute = RemixRouteImport.update({
+  id: '/remix',
+  path: '/remix',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/breakdown/$postId': typeof BreakdownPostIdRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/breakdown/$postId': typeof BreakdownPostIdRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/breakdown/$postId': typeof BreakdownPostIdRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/boards'
     | '/dashboard'
+    | '/remix'
     | '/voice'
     | '/boards/$boardId'
     | '/breakdown/$postId'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/boards'
     | '/dashboard'
+    | '/remix'
     | '/voice'
     | '/boards/$boardId'
     | '/breakdown/$postId'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/boards'
     | '/dashboard'
+    | '/remix'
     | '/voice'
     | '/boards/$boardId'
     | '/breakdown/$postId'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoardsRoute: typeof BoardsRouteWithChildren
   DashboardRoute: typeof DashboardRoute
+  RemixRoute: typeof RemixRoute
   VoiceRoute: typeof VoiceRoute
   BreakdownPostIdRoute: typeof BreakdownPostIdRoute
 }
@@ -114,6 +127,13 @@ declare module '@tanstack/react-router' {
       path: '/voice'
       fullPath: '/voice'
       preLoaderRoute: typeof VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/remix': {
+      id: '/remix'
+      path: '/remix'
+      fullPath: '/remix'
+      preLoaderRoute: typeof RemixRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -169,6 +189,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoardsRoute: BoardsRouteWithChildren,
   DashboardRoute: DashboardRoute,
+  RemixRoute: RemixRoute,
   VoiceRoute: VoiceRoute,
   BreakdownPostIdRoute: BreakdownPostIdRoute,
 }
