@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as RemixRouteImport } from './routes/remix'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as BoardsRouteImport } from './routes/boards'
@@ -26,6 +27,11 @@ const VoiceRoute = VoiceRouteImport.update({
 const RemixRoute = RemixRouteImport.update({
   id: '/remix',
   path: '/remix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/boards': typeof BoardsRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
+  '/pricing': typeof PricingRoute
   '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/boards': typeof BoardsRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
+  '/pricing': typeof PricingRoute
   '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/boards': typeof BoardsRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/dashboard': typeof DashboardRoute
+  '/pricing': typeof PricingRoute
   '/remix': typeof RemixRoute
   '/voice': typeof VoiceRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/boards'
     | '/calendar'
     | '/dashboard'
+    | '/pricing'
     | '/remix'
     | '/voice'
     | '/boards/$boardId'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/boards'
     | '/calendar'
     | '/dashboard'
+    | '/pricing'
     | '/remix'
     | '/voice'
     | '/boards/$boardId'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/boards'
     | '/calendar'
     | '/dashboard'
+    | '/pricing'
     | '/remix'
     | '/voice'
     | '/boards/$boardId'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   BoardsRoute: typeof BoardsRouteWithChildren
   CalendarRoute: typeof CalendarRoute
   DashboardRoute: typeof DashboardRoute
+  PricingRoute: typeof PricingRoute
   RemixRoute: typeof RemixRoute
   VoiceRoute: typeof VoiceRoute
   BreakdownPostIdRoute: typeof BreakdownPostIdRoute
@@ -147,6 +160,13 @@ declare module '@tanstack/react-router' {
       path: '/remix'
       fullPath: '/remix'
       preLoaderRoute: typeof RemixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -210,6 +230,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoardsRoute: BoardsRouteWithChildren,
   CalendarRoute: CalendarRoute,
   DashboardRoute: DashboardRoute,
+  PricingRoute: PricingRoute,
   RemixRoute: RemixRoute,
   VoiceRoute: VoiceRoute,
   BreakdownPostIdRoute: BreakdownPostIdRoute,
