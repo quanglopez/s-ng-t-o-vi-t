@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BoardsRouteImport } from './routes/boards'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BreakdownPostIdRouteImport } from './routes/breakdown.$postId'
 import { Route as BoardsBoardIdRouteImport } from './routes/boards.$boardId'
 
 const DashboardRoute = DashboardRouteImport.update({
@@ -29,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BreakdownPostIdRoute = BreakdownPostIdRouteImport.update({
+  id: '/breakdown/$postId',
+  path: '/breakdown/$postId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BoardsBoardIdRoute = BoardsBoardIdRouteImport.update({
   id: '/$boardId',
   path: '/$boardId',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
+  '/breakdown/$postId': typeof BreakdownPostIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
+  '/breakdown/$postId': typeof BreakdownPostIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,19 +61,32 @@ export interface FileRoutesById {
   '/boards': typeof BoardsRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
+  '/breakdown/$postId': typeof BreakdownPostIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boards' | '/dashboard' | '/boards/$boardId'
+  fullPaths:
+    | '/'
+    | '/boards'
+    | '/dashboard'
+    | '/boards/$boardId'
+    | '/breakdown/$postId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boards' | '/dashboard' | '/boards/$boardId'
-  id: '__root__' | '/' | '/boards' | '/dashboard' | '/boards/$boardId'
+  to: '/' | '/boards' | '/dashboard' | '/boards/$boardId' | '/breakdown/$postId'
+  id:
+    | '__root__'
+    | '/'
+    | '/boards'
+    | '/dashboard'
+    | '/boards/$boardId'
+    | '/breakdown/$postId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoardsRoute: typeof BoardsRouteWithChildren
   DashboardRoute: typeof DashboardRoute
+  BreakdownPostIdRoute: typeof BreakdownPostIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -89,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/breakdown/$postId': {
+      id: '/breakdown/$postId'
+      path: '/breakdown/$postId'
+      fullPath: '/breakdown/$postId'
+      preLoaderRoute: typeof BreakdownPostIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/boards/$boardId': {
@@ -116,6 +144,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoardsRoute: BoardsRouteWithChildren,
   DashboardRoute: DashboardRoute,
+  BreakdownPostIdRoute: BreakdownPostIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
