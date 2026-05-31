@@ -2,7 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
 import { posts } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Anchor, Target, ListOrdered, Megaphone, Lightbulb, ArrowLeft, Copy, Wand2 } from "lucide-react";
+import {
+  Sparkles,
+  Anchor,
+  Target,
+  ListOrdered,
+  Megaphone,
+  Lightbulb,
+  ArrowLeft,
+  Copy,
+  Wand2,
+} from "lucide-react";
 
 export const Route = createFileRoute("/breakdown/$postId")({
   head: () => ({ meta: [{ title: "AI Breakdown · Vinrl" }] }),
@@ -57,22 +67,39 @@ function Breakdown() {
   ];
 
   return (
-    <AppShell title="AI Breakdown" subtitle={`${post.author} · ${post.platform} · ${post.views} views`}>
-      <Link to="/boards/$boardId" params={{ boardId: post.boardId }} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
+    <AppShell
+      title="AI Breakdown"
+      subtitle={`${post.author} · ${post.platform} · ${post.views} views`}
+    >
+      <Link
+        to="/boards/$boardId"
+        params={{ boardId: post.boardId }}
+        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
+      >
         <ArrowLeft className="h-4 w-4" /> Quay lại bảng
       </Link>
 
       <div className="grid lg:grid-cols-[360px_1fr] gap-8">
         <aside className="space-y-4">
-          <div className={`rounded-2xl overflow-hidden border border-border/60 aspect-[3/4] bg-gradient-to-br ${post.thumb} p-5 flex flex-col justify-between sticky top-24`}>
+          <div
+            className={`rounded-2xl overflow-hidden border border-border/60 aspect-[3/4] bg-gradient-to-br ${post.thumb} p-5 flex flex-col justify-between sticky top-24`}
+          >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur px-2 py-0.5 rounded-full">{post.platform}</span>
-              <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur px-2 py-0.5 rounded-full">{post.views} views</span>
+              <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur px-2 py-0.5 rounded-full">
+                {post.platform}
+              </span>
+              <span className="text-[10px] font-bold text-white bg-black/40 backdrop-blur px-2 py-0.5 rounded-full">
+                {post.views} views
+              </span>
             </div>
             <div>
-              <div className="text-white font-display font-bold text-xl leading-tight">{post.hook}</div>
+              <div className="text-white font-display font-bold text-xl leading-tight">
+                {post.hook}
+              </div>
               <div className="mt-4 flex items-center gap-2 text-white/90 text-xs">
-                <div className="h-7 w-7 rounded-full bg-white/20 grid place-items-center font-bold">{post.author[0]}</div>
+                <div className="h-7 w-7 rounded-full bg-white/20 grid place-items-center font-bold">
+                  {post.author[0]}
+                </div>
                 <div>
                   <div className="font-semibold">{post.author}</div>
                   <div className="opacity-80">{post.handle}</div>
@@ -90,29 +117,45 @@ function Breakdown() {
               </div>
               <div>
                 <div className="font-display font-bold">Phân tích bằng AI hoàn tất</div>
-                <div className="text-xs text-muted-foreground">Sẵn sàng để remix bằng giọng văn của bạn.</div>
+                <div className="text-xs text-muted-foreground">
+                  Sẵn sàng để remix bằng giọng văn của bạn.
+                </div>
               </div>
             </div>
-            <Link to="/remix"><Button className="bg-foreground text-background gap-2"><Wand2 className="h-4 w-4" /> Remix ngay</Button></Link>
+            <Link to="/remix">
+              <Button className="bg-foreground text-background gap-2">
+                <Wand2 className="h-4 w-4" /> Remix ngay
+              </Button>
+            </Link>
           </div>
 
           {sections.map(({ icon: Icon, label, tag, color, body, note }) => (
-            <article key={label} className="rounded-2xl border border-border/60 bg-surface-elev p-6">
+            <article
+              key={label}
+              className="rounded-2xl border border-border/60 bg-surface-elev p-6"
+            >
               <div className="flex items-start gap-4">
-                <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${color} grid place-items-center shadow-glow shrink-0`}>
+                <div
+                  className={`h-11 w-11 rounded-xl bg-gradient-to-br ${color} grid place-items-center shadow-glow shrink-0`}
+                >
                   <Icon className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-display text-lg font-bold">{label}</h3>
-                    <span className="text-[10px] uppercase tracking-wider text-brand font-semibold bg-brand/10 px-2 py-0.5 rounded-full">{tag}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-brand font-semibold bg-brand/10 px-2 py-0.5 rounded-full">
+                      {tag}
+                    </span>
                   </div>
                   <p className="text-foreground leading-relaxed">{body}</p>
                   <div className="mt-3 p-3 rounded-xl bg-accent/50 text-sm text-muted-foreground border-l-2 border-brand">
-                    <span className="font-semibold text-foreground">Insight: </span>{note}
+                    <span className="font-semibold text-foreground">Insight: </span>
+                    {note}
                   </div>
                 </div>
-                <Button variant="ghost" size="icon" className="shrink-0"><Copy className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" className="shrink-0">
+                  <Copy className="h-4 w-4" />
+                </Button>
               </div>
             </article>
           ))}

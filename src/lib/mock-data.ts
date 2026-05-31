@@ -21,11 +21,35 @@ export const platformGradient: Record<Post["platform"], string> = {
 };
 
 export const boards = [
-  { id: "viral-hooks", name: "Hook viral 2026", emoji: "🪝", count: 42, color: "from-brand to-brand-2" },
-  { id: "skincare", name: "Skincare cho Gen Z", emoji: "✨", count: 28, color: "from-brand-2 to-brand-3" },
+  {
+    id: "viral-hooks",
+    name: "Hook viral 2026",
+    emoji: "🪝",
+    count: 42,
+    color: "from-brand to-brand-2",
+  },
+  {
+    id: "skincare",
+    name: "Skincare cho Gen Z",
+    emoji: "✨",
+    count: 28,
+    color: "from-brand-2 to-brand-3",
+  },
   { id: "fnb", name: "F&B Sài Gòn", emoji: "🍜", count: 36, color: "from-brand-3 to-brand-4" },
-  { id: "ecom", name: "E-commerce dropship", emoji: "📦", count: 19, color: "from-brand-4 to-brand" },
-  { id: "personal", name: "Personal branding", emoji: "🎙️", count: 24, color: "from-brand to-brand-3" },
+  {
+    id: "ecom",
+    name: "E-commerce dropship",
+    emoji: "📦",
+    count: 19,
+    color: "from-brand-4 to-brand",
+  },
+  {
+    id: "personal",
+    name: "Personal branding",
+    emoji: "🎙️",
+    count: 24,
+    color: "from-brand to-brand-3",
+  },
   { id: "edu", name: "Edutok tài chính", emoji: "💸", count: 15, color: "from-brand-2 to-brand-4" },
 ];
 

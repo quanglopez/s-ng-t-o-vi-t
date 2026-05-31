@@ -5,7 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bell, Plus, Search } from "lucide-react";
 
-export function AppShell({ children, title, subtitle }: { children: ReactNode; title: string; subtitle?: string }) {
+export function AppShell({
+  children,
+  title,
+  subtitle,
+}: {
+  children: ReactNode;
+  title: string;
+  subtitle?: string;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background">
@@ -23,8 +31,13 @@ export function AppShell({ children, title, subtitle }: { children: ReactNode; t
                 <Input placeholder="Tìm post, hook, creator…" className="pl-9 h-10 bg-surface" />
               </div>
             </div>
-            <Button variant="ghost" size="icon" className="rounded-full"><Bell className="h-4 w-4" /></Button>
-            <Button onClick={() => setOpen(true)} className="bg-gradient-brand text-white gap-2 shadow-glow">
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <Bell className="h-4 w-4" />
+            </Button>
+            <Button
+              onClick={() => setOpen(true)}
+              className="bg-gradient-brand text-white gap-2 shadow-glow"
+            >
               <Plus className="h-4 w-4" /> Thêm
             </Button>
           </div>

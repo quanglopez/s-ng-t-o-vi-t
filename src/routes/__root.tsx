@@ -78,10 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Vinrl — Workspace AI cho creator Việt" },
-      { name: "description", content: "Lưu, phân tích và remix nội dung viral bằng AI. Dành riêng cho creator và agency Việt Nam." },
+      {
+        name: "description",
+        content:
+          "Lưu, phân tích và remix nội dung viral bằng AI. Dành riêng cho creator và agency Việt Nam.",
+      },
       { name: "author", content: "Vinrl" },
       { property: "og:title", content: "Vinrl — Workspace AI cho creator Việt" },
-      { property: "og:description", content: "Lưu, phân tích và remix nội dung viral bằng AI. Dành riêng cho creator và agency Việt Nam." },
+      {
+        property: "og:description",
+        content:
+          "Lưu, phân tích và remix nội dung viral bằng AI. Dành riêng cho creator và agency Việt Nam.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },

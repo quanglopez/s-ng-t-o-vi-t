@@ -48,7 +48,8 @@ export function AppSidebar({ onAdd }: { onAdd: () => void }) {
 
       <nav className="mt-6 px-3 space-y-0.5 flex-1">
         {nav.map((item) => {
-          const active = pathname === item.to || (item.to !== "/dashboard" && pathname.startsWith(item.to));
+          const active =
+            pathname === item.to || (item.to !== "/dashboard" && pathname.startsWith(item.to));
           const Icon = item.icon;
           return (
             <Link
@@ -69,16 +70,23 @@ export function AppSidebar({ onAdd }: { onAdd: () => void }) {
 
       <div className="m-3 rounded-2xl p-4 bg-gradient-brand-soft border border-border/60">
         <div className="text-xs font-semibold text-foreground">Bạn còn 7 ngày dùng thử</div>
-        <div className="text-[11px] text-muted-foreground mt-1">Nâng cấp để mở khoá Remix AI không giới hạn.</div>
+        <div className="text-[11px] text-muted-foreground mt-1">
+          Nâng cấp để mở khoá Remix AI không giới hạn.
+        </div>
         <Link to="/pricing">
-          <Button size="sm" className="mt-3 w-full bg-foreground text-background hover:bg-foreground/90">
+          <Button
+            size="sm"
+            className="mt-3 w-full bg-foreground text-background hover:bg-foreground/90"
+          >
             Xem gói
           </Button>
         </Link>
       </div>
 
       <div className="px-5 py-4 border-t border-border/60 flex items-center gap-3">
-        <div className="h-9 w-9 rounded-full bg-gradient-brand grid place-items-center text-white text-sm font-bold">M</div>
+        <div className="h-9 w-9 rounded-full bg-gradient-brand grid place-items-center text-white text-sm font-bold">
+          M
+        </div>
         <div className="text-xs leading-tight">
           <div className="font-semibold">Minh Lê</div>
           <div className="text-muted-foreground">Creator · Pro</div>

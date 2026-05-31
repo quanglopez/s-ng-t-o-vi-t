@@ -6,7 +6,11 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "Gói cước · Vinrl" },
-      { name: "description", content: "Bảng giá Vinrl — workspace AI cho creator và agency Việt. Dùng thử 7 ngày miễn phí." },
+      {
+        name: "description",
+        content:
+          "Bảng giá Vinrl — workspace AI cho creator và agency Việt. Dùng thử 7 ngày miễn phí.",
+      },
     ],
   }),
   component: PricingPage,
@@ -71,16 +75,26 @@ function PricingPage() {
             </div>
             <span className="font-display font-bold text-lg">Vinrl</span>
           </Link>
-          <Link to="/" className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1"><ArrowLeft className="h-3.5 w-3.5" /> Trang chủ</Link>
+          <Link
+            to="/"
+            className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" /> Trang chủ
+          </Link>
         </div>
       </header>
 
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-10 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border/60 text-xs font-medium">
-          <span className="h-2 w-2 rounded-full bg-brand animate-pulse" /> Ra mắt — giảm 30% cho 1.000 user đầu
+          <span className="h-2 w-2 rounded-full bg-brand animate-pulse" /> Ra mắt — giảm 30% cho
+          1.000 user đầu
         </div>
-        <h1 className="mt-6 font-display text-5xl md:text-6xl font-extrabold tracking-tight">Giá <span className="text-gradient-brand">đơn giản</span>, không bẫy.</h1>
-        <p className="mt-4 max-w-xl mx-auto text-muted-foreground">Mọi gói đều có 7 ngày dùng thử. Huỷ bất cứ lúc nào, không cần lý do.</p>
+        <h1 className="mt-6 font-display text-5xl md:text-6xl font-extrabold tracking-tight">
+          Giá <span className="text-gradient-brand">đơn giản</span>, không bẫy.
+        </h1>
+        <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
+          Mọi gói đều có 7 ngày dùng thử. Huỷ bất cứ lúc nào, không cần lý do.
+        </p>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-20">
@@ -95,23 +109,43 @@ function PricingPage() {
               }`}
             >
               {p.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest bg-foreground text-background px-3 py-1 rounded-full">Phổ biến nhất</span>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest bg-foreground text-background px-3 py-1 rounded-full">
+                  Phổ biến nhất
+                </span>
               )}
-              <div className={`text-sm font-semibold ${p.highlight ? "text-white/90" : "text-muted-foreground"}`}>{p.name}</div>
+              <div
+                className={`text-sm font-semibold ${p.highlight ? "text-white/90" : "text-muted-foreground"}`}
+              >
+                {p.name}
+              </div>
               <div className="mt-4 flex items-baseline gap-1">
                 <div className="font-display text-4xl font-extrabold">{p.price}</div>
-                {p.period && <div className={`text-sm ${p.highlight ? "text-white/80" : "text-muted-foreground"}`}>{p.period}</div>}
+                {p.period && (
+                  <div
+                    className={`text-sm ${p.highlight ? "text-white/80" : "text-muted-foreground"}`}
+                  >
+                    {p.period}
+                  </div>
+                )}
               </div>
-              <div className={`text-sm mt-1 ${p.highlight ? "text-white/85" : "text-muted-foreground"}`}>{p.sub}</div>
+              <div
+                className={`text-sm mt-1 ${p.highlight ? "text-white/85" : "text-muted-foreground"}`}
+              >
+                {p.sub}
+              </div>
 
-              <Button className={`w-full mt-6 ${p.highlight ? "bg-white text-foreground hover:bg-white/90" : "bg-foreground text-background"}`}>
+              <Button
+                className={`w-full mt-6 ${p.highlight ? "bg-white text-foreground hover:bg-white/90" : "bg-foreground text-background"}`}
+              >
                 {p.cta}
               </Button>
 
               <ul className="mt-6 space-y-3">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm">
-                    <Check className={`h-4 w-4 mt-0.5 shrink-0 ${p.highlight ? "text-white" : "text-brand"}`} />
+                    <Check
+                      className={`h-4 w-4 mt-0.5 shrink-0 ${p.highlight ? "text-white" : "text-brand"}`}
+                    />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -124,12 +158,27 @@ function PricingPage() {
           <h2 className="font-display text-2xl font-bold text-center mb-8">Câu hỏi thường gặp</h2>
           <div className="space-y-3">
             {[
-              { q: "Vinrl có hỗ trợ tiếng Việt không?", a: "Có — toàn bộ AI breakdown và Remix đều tối ưu cho tiếng Việt và văn hoá Việt Nam." },
-              { q: "Tôi có thể huỷ bất cứ lúc nào?", a: "Có. Không hợp đồng, không phí huỷ. Bạn dùng đến cuối kỳ thanh toán." },
-              { q: "Dữ liệu của tôi có an toàn?", a: "Server đặt tại Singapore + backup tại VN. Mọi voice profile chỉ bạn truy cập được." },
-              { q: "Có thể đổi gói giữa chừng?", a: "Có thể nâng cấp hoặc hạ cấp bất cứ lúc nào, tính theo tỉ lệ ngày." },
+              {
+                q: "Vinrl có hỗ trợ tiếng Việt không?",
+                a: "Có — toàn bộ AI breakdown và Remix đều tối ưu cho tiếng Việt và văn hoá Việt Nam.",
+              },
+              {
+                q: "Tôi có thể huỷ bất cứ lúc nào?",
+                a: "Có. Không hợp đồng, không phí huỷ. Bạn dùng đến cuối kỳ thanh toán.",
+              },
+              {
+                q: "Dữ liệu của tôi có an toàn?",
+                a: "Server đặt tại Singapore + backup tại VN. Mọi voice profile chỉ bạn truy cập được.",
+              },
+              {
+                q: "Có thể đổi gói giữa chừng?",
+                a: "Có thể nâng cấp hoặc hạ cấp bất cứ lúc nào, tính theo tỉ lệ ngày.",
+              },
             ].map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-border/60 bg-surface-elev p-5">
+              <details
+                key={f.q}
+                className="group rounded-2xl border border-border/60 bg-surface-elev p-5"
+              >
                 <summary className="font-display font-semibold cursor-pointer list-none flex items-center justify-between">
                   {f.q}
                   <span className="text-brand text-xl group-open:rotate-45 transition">+</span>
